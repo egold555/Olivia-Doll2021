@@ -54,15 +54,9 @@ const char index_html[] PROGMEM = R"rawliteral(
 		margin: 50px auto 30px;
 	}
 	
-	h3 {
-		color: #444444;
-		margin-bottom: 50px;
-	}
-	
 	.button {
 		display: block;
 		/*width: 80px;*/
-		background-color: #1abc9c;
 		border: none;
 		color: white;
 		padding: 13px 30px;
@@ -73,20 +67,20 @@ const char index_html[] PROGMEM = R"rawliteral(
 		border-radius: 4px;
 	}
 	
-	.button-on {
+	.button-sfx:nth-child(odd) {
 		background-color: #1abc9c;
 	}
 	
-	.button-on:active {
-		background-color: #16a085;
+	.button-sfx:nth-child(even) {
+		background-color: #138770;
 	}
 	
-	.button-off {
+	.button-servo:nth-child(odd) {
 		background-color: #34495e;
 	}
 	
-	.button-off:active {
-		background-color: #2c3e50;
+	.button-servo:nth-child(even) {
+		background-color: #1d2a36;
 	}
 	
 	p {
@@ -96,16 +90,16 @@ const char index_html[] PROGMEM = R"rawliteral(
 	}
 
   .slider {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 15px;
-  margin: 0px auto 35px;
-  border-radius: 5px;  
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    margin: 0px auto 35px;
+    border-radius: 5px;  
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
 }
 
 .slider::-webkit-slider-thumb {
@@ -114,7 +108,7 @@ const char index_html[] PROGMEM = R"rawliteral(
   width: 25px;
   height: 25px;
   border-radius: 50%; 
-  background: #04AA6D;
+  background: #34495e;
   cursor: pointer;
 }
 
@@ -122,7 +116,7 @@ const char index_html[] PROGMEM = R"rawliteral(
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #04AA6D;
+  background: #34495e;
   cursor: pointer;
 }
 	</style>
@@ -130,21 +124,21 @@ const char index_html[] PROGMEM = R"rawliteral(
 
 <body>
 	<h1>Doll Web Server</h1>
-  <a class="button button-on" href="javascript:send('sound/2');">SFX: Come Play</a>
-  <a class="button button-on" href="javascript:send('sound/3');">SFX: Giggle 1</a>
-  <a class="button button-on" href="javascript:send('sound/4');">SFX: Giggle 2</a>
-  <a class="button button-on" href="javascript:send('sound/5');">SFX: I'm watching you</a>
-  <a class="button button-on" href="javascript:send('sound/6');">SFX: Ring around la la la</a>
-  <a class="button button-on" href="javascript:send('sound/7');">SFX: Raining pouring</a>
-  <a class="button button-on" href="javascript:send('sound/8');">SFX: Ring around</a>
-  <a class="button button-on" href="javascript:send('sound/9');">SFX: Can't find friends</a>
-  <a class="button button-on" href="javascript:send('sound/10');">SFX: Man at the store</a>
-  <a class="button button-on" href="javascript:send('sound/11');">SFX: Next to your bed</a>
-  <a class="button button-on" href="javascript:send('sound/12');">SFX: Dropped me and I broke</a>
+  <a class="button button-sfx" href="javascript:send('sound/2');">SFX: Come Play</a>
+  <a class="button button-sfx" href="javascript:send('sound/3');">SFX: Giggle 1</a>
+  <a class="button button-sfx" href="javascript:send('sound/4');">SFX: Giggle 2</a>
+  <a class="button button-sfx" href="javascript:send('sound/5');">SFX: I'm watching you</a>
+  <a class="button button-sfx" href="javascript:send('sound/6');">SFX: Ring around la la la</a>
+  <a class="button button-sfx" href="javascript:send('sound/7');">SFX: Raining pouring</a>
+  <a class="button button-sfx" href="javascript:send('sound/8');">SFX: Ring around</a>
+  <a class="button button-sfx" href="javascript:send('sound/9');">SFX: Can't find friends</a>
+  <a class="button button-sfx" href="javascript:send('sound/10');">SFX: Man at the store</a>
+  <a class="button button-sfx" href="javascript:send('sound/11');">SFX: Next to your bed</a>
+  <a class="button button-sfx" href="javascript:send('sound/12');">SFX: Dropped me and I broke</a>
   <input type="range" min="0" max="180" value="90" class="slider" id="slider" onchange="setPos(this.value)">
-  <a class="button button-on" href="javascript:setPos2(0);">Servo: 0</a>
-  <a class="button button-on" href="javascript:setPos2(90);">Servo: 90</a>
-  <a class="button button-on" href="javascript:setPos2(180);">Servo: 180</a>
+  <a class="button button-servo" href="javascript:setPos2(0);">Servo: 0</a>
+  <a class="button button-servo" href="javascript:setPos2(90);">Servo: 90</a>
+  <a class="button button-servo" href="javascript:setPos2(180);">Servo: 180</a>
    <script>
    function send(x) {
      var xhr = new XMLHttpRequest();
